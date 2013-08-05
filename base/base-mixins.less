@@ -1,0 +1,22 @@
+// define generic utility mixins
+.fix () {
+	_height: 1px;
+	min-height: 1px;
+	&:after {
+    .fix-after();
+  }
+}
+.fix-after () {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+.has () {
+	overflow: hidden;
+	_overflow: visible;
+	zoom: 1;
+}
+

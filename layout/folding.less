@@ -1,0 +1,128 @@
+
+
+/*
+ * Folding Pattern
+ *
+ * there are four patterns, a, b, c and d
+ * mixins may be used to create a CSS module, taking a, b, c or d as an argument
+ * or to create a CSS module at a set breakpoint, 
+ * taking the pattern type as an argument again, followed by the min and max widths
+ * 
+ * CSS module mixin example:
+ *   mixin:
+ *     .folding-pattern(a);
+ * 
+ *   ouput:
+ *     .folding-pattern .folding-pattern-a
+ *       .fold-1
+ *       .fold-2
+ *       .fold-3
+ *   
+ * CSS module at a breakpoint mixin example:
+ *   mixin:
+ *     .folding-pattern(a, 400, 600);
+ * 
+ *   ouput:
+ *     .folding-pattern-400--600 .folding-pattern-a--400-600
+ *       .fold-1
+ *       .fold-2
+ *       .fold-3
+ *
+ */
+ 
+// define CSS module base
+// do not use with the .folding-pattern-inner() mixin
+// pick one or the other
+.folding-pattern {
+  .fix();
+}
+
+// define Folding Pattern mixins
+
+// .folding-pattern-inner() is unnecessary if .folding-pattern is used
+// pick one or the other
+/*
+ * commented out in deference to use of .folding-pattern or .folding-pattern--min-max
+.folding-pattern-inner(...) {
+  .fix();
+}
+*/
+
+.folding-pattern-inner(a) {
+  .fold-1 {
+    width: auto;
+  }
+  .fold-2 {
+	  float: left;
+	  width: 50%;
+  }
+  .fold-3 {
+	  float: right;
+	  width: 50%;
+  }
+}
+.folding-pattern-inner(b) {
+  .fold-1 {
+	  float: left;
+	  width: 33.3333%;
+  }
+  .fold-2,
+  .fold-3 {
+    float: right;
+    width: 66.6666%;
+  }
+}
+.folding-pattern-inner(c) {
+  .fold-1 {
+	  float: left;
+	  width: 50%;
+  }
+  .fold-2 {
+	  float: right;
+	  width: 50%;
+  }
+  .fold-3 {
+    clear: both;
+  }
+}
+.folding-pattern-inner(d) {
+  .fold-1 {
+	  float: left;
+	  width: 66.6666%;
+  }
+  .fold-2 {
+	  float: right;
+	  width: 33.3333%;
+  }
+  .fold-3 {
+    float: left;
+	  width: 66.6666%;
+  }
+}
+.folding-pattern (@type) {
+  .folding-pattern-@{type} {
+    .folding-pattern-inner(@type);
+  }
+}
+.folding-pattern (@type; @min; @max) {
+  @query: ~"screen and (min-width: @{min}px) and (max-width: @{max}px)";
+  @media @query {
+    
+    // .folding-pattern--min-max is only required if .folding-pattern is used     
+    // and thus .folding-pattern-inner() is NOT used
+    .folding-pattern--&@{min}-&@{max} {
+      .folding-pattern;
+    }
+    .folding-pattern-&@{type}--&@{min}-&@{max} {
+      .folding-pattern-inner(@type);
+    }
+  }
+}
+
+/*
+ * end Folding Pattern
+ */
+
+
+
+

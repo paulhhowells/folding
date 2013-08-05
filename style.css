@@ -1,0 +1,259 @@
+@import 'prototyping/wrapper-breakpoints.css';
+html,
+body {
+  font-size: 100%;
+}
+html,
+body,
+h1,
+h3,
+h3,
+h4,
+h5,
+h6,
+p,
+img {
+  margin: 0;
+  padding: 0;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+audio,
+canvas,
+video {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+/*
+ * Folding Pattern
+ *
+ * there are four patterns, a, b, c and d
+ * mixins may be used to create a CSS module, taking a, b, c or d as an argument
+ * or to create a CSS module at a set breakpoint, 
+ * taking the pattern type as an argument again, followed by the min and max widths
+ * 
+ * CSS module mixin example:
+ *   mixin:
+ *     .folding-pattern(a);
+ * 
+ *   ouput:
+ *     .folding-pattern .folding-pattern-a
+ *       .fold-1
+ *       .fold-2
+ *       .fold-3
+ *   
+ * CSS module at a breakpoint mixin example:
+ *   mixin:
+ *     .folding-pattern(a, 400, 600);
+ * 
+ *   ouput:
+ *     .folding-pattern-400--600 .folding-pattern-a--400-600
+ *       .fold-1
+ *       .fold-2
+ *       .fold-3
+ *
+ */
+.folding-pattern {
+  _height: 1px;
+  min-height: 1px;
+}
+.folding-pattern:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+/*
+ * commented out in deference to use of .folding-pattern or .folding-pattern--min-max
+.folding-pattern-inner(...) {
+  .fix();
+}
+*/
+/*
+ * end Folding Pattern
+ */
+body {
+  font-family: sans-serif;
+  color: #111;
+  background-color: #ddd;
+}
+h1 {
+  margin: 0.25em 0 0.5em -0.045em;
+  /* padding: 0 15px 0 15px; */
+
+  font-size: 4em;
+  line-height: 1em;
+  font-family: 'Helvetica Neue', sans-serif;
+  font-weight: bold;
+  letter-spacing: -0.05em;
+  color: #fff;
+}
+h2 {
+  margin: 0;
+  padding: 1.25em 0 0.25em 0;
+}
+.wrapper {
+  margin: 0 10% 0 10%;
+}
+.module {
+  /* margin-bottom: 10px; */
+
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  font-size: 0.875rem;
+  line-height: 1.5em;
+}
+.folding-pattern-a .fold-1 {
+  width: auto;
+}
+.folding-pattern-a .fold-2 {
+  float: left;
+  width: 50%;
+}
+.folding-pattern-a .fold-3 {
+  float: right;
+  width: 50%;
+}
+.folding-pattern-b .fold-1 {
+  float: left;
+  width: 33.3333%;
+}
+.folding-pattern-b .fold-2,
+.folding-pattern-b .fold-3 {
+  float: right;
+  width: 66.6666%;
+}
+.folding-pattern-c .fold-1 {
+  float: left;
+  width: 50%;
+}
+.folding-pattern-c .fold-2 {
+  float: right;
+  width: 50%;
+}
+.folding-pattern-c .fold-3 {
+  clear: both;
+}
+.folding-pattern-d .fold-1 {
+  float: left;
+  width: 66.6666%;
+}
+.folding-pattern-d .fold-2 {
+  float: right;
+  width: 33.3333%;
+}
+.folding-pattern-d .fold-3 {
+  float: left;
+  width: 66.6666%;
+}
+@media screen and (min-width: 460px) and (max-width: 600px) {
+  .folding-pattern--460-600 {
+    _height: 1px;
+    min-height: 1px;
+  }
+  .folding-pattern--460-600:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+  .folding-pattern-a--460-600 .fold-1 {
+    width: auto;
+  }
+  .folding-pattern-a--460-600 .fold-2 {
+    float: left;
+    width: 50%;
+  }
+  .folding-pattern-a--460-600 .fold-3 {
+    float: right;
+    width: 50%;
+  }
+}
+@media screen and (min-width: 460px) and (max-width: 600px) {
+  .folding-pattern--460-600 {
+    _height: 1px;
+    min-height: 1px;
+  }
+  .folding-pattern--460-600:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+  .folding-pattern-b--460-600 .fold-1 {
+    float: left;
+    width: 33.3333%;
+  }
+  .folding-pattern-b--460-600 .fold-2,
+  .folding-pattern-b--460-600 .fold-3 {
+    float: right;
+    width: 66.6666%;
+  }
+}
+@media screen and (min-width: 460px) and (max-width: 600px) {
+  .folding-pattern--460-600 {
+    _height: 1px;
+    min-height: 1px;
+  }
+  .folding-pattern--460-600:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+  .folding-pattern-c--460-600 .fold-1 {
+    float: left;
+    width: 50%;
+  }
+  .folding-pattern-c--460-600 .fold-2 {
+    float: right;
+    width: 50%;
+  }
+  .folding-pattern-c--460-600 .fold-3 {
+    clear: both;
+  }
+}
+@media screen and (min-width: 460px) and (max-width: 600px) {
+  .folding-pattern--460-600 {
+    _height: 1px;
+    min-height: 1px;
+  }
+  .folding-pattern--460-600:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+  .folding-pattern-d--460-600 .fold-1 {
+    float: left;
+    width: 66.6666%;
+  }
+  .folding-pattern-d--460-600 .fold-2 {
+    float: right;
+    width: 33.3333%;
+  }
+  .folding-pattern-d--460-600 .fold-3 {
+    float: left;
+    width: 66.6666%;
+  }
+}
