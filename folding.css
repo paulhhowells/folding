@@ -1,0 +1,80 @@
+/*
+ * Folding CSS
+ *
+ * and example of four folding layout patterns
+ * (without breakpoints for simplicity)
+ *
+ * class structure:
+ *   .folding-pattern .folding-pattern-a
+ *     .fold-1
+ *     .fold-2
+ *     .fold-3
+ */
+ 
+
+.folding-pattern {
+  _height: 1px;
+  min-height: 1px;
+}
+.folding-pattern:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* Pattern A */
+.folding-pattern-a .fold-1 {
+  width: auto;
+}
+.folding-pattern-a .fold-2 {
+  float: left;
+  width: 50%;
+}
+.folding-pattern-a .fold-3 {
+  float: right;
+  width: 50%;
+}
+
+/* Pattern B */
+.folding-pattern-b .fold-1 {
+  float: left;
+  width: 33.3333%;
+}
+.folding-pattern-b .fold-2,
+.folding-pattern-b .fold-3 {
+  float: right;
+  width: 66.6666%;
+}
+
+/* Pattern C */
+.folding-pattern-c .fold-1 {
+  float: left;
+  width: 50%;
+}
+.folding-pattern-c .fold-2 {
+  float: right;
+  width: 50%;
+}
+.folding-pattern-c .fold-3 {
+  clear: both;
+}
+
+/* Pattern D */
+.folding-pattern-d .fold-1 {
+  float: left;
+  width: 66.6666%;
+}
+.folding-pattern-d .fold-2 {
+  float: right;
+  width: 33.3333%;
+}
+.folding-pattern-d .fold-3 {
+  float: left;
+  width: 66.6666%;
+}
+
+
+
+
