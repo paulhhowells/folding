@@ -3,9 +3,9 @@ folding
 
 Take a look at index.html to see an example of Folding Layout Patterns being applied between breakpoints.
 
-folding.css provides a minimal block of CSS providing four Folding Patterns (without breakpoints).
+folding.css provides these four Folding Patterns as a minimal block of CSS (without breakpoints).
 
-layout/folding.less provides mixins that generate the same four Folding Patterns, optionally constrained to min-width and max-width breakpoints.
+layout/folding.less provides Less preprocessor mixins that generate the same four Folding Patterns, optionally constrained to min-width and max-width breakpoints.
 
 
 to do
